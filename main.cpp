@@ -2,6 +2,8 @@
 #include <iostream>
 
 int manipulator, x_1, x_2, y_1, y_2, figure, answer2, answer3_x, answer3_y;
+bool subtask3_flag1 = false;
+bool subtask3_flag2 = false;
 
 int plate [8][8] = {
         {0,0,0,0,0,0,0,0},
@@ -203,13 +205,59 @@ int main() {
                 }
 
                 if(plate[x_2 - 1][y_2 - 1] != 0){
-                    std::cout << "Поле (m, n) - находится под ударом !";
+                    std::cout << "Поле (m, n) - находится под ударом !" << std::endl;
                 } else {
-                    std::cout << "Поле (m, n) - НЕ находится под ударом !";
+                    std::cout << "Поле (m, n) - НЕ находится под ударом !" << std::endl;
                 }
 
             break;
         case 3:
+                request_coordinates();
+
+                request_figure(false);
+
+                switch (figure) {
+                    case 1:
+                        mark_queen(x_1 - 1, y_1 - 1);
+                        if(plate[x_2 - 1][y_2 - 1] != 0){
+                            subtask3_flag1 = true;
+                        }
+                        mark_queen(x_2 - 1, y_2 - 1);
+                        break;
+                    case 2:
+                        mark_rock(x_1 - 1, y_1 - 1);
+                        if(plate[x_2 - 1][y_2 - 1] != 0){
+                            subtask3_flag1 = true;
+                        }
+                        mark_rock(x_2 - 1, y_2 - 1);
+                        break;
+                    case 3:
+                        mark_elephant(x_1 - 1, y_1 - 1);
+                        if(plate[x_2 - 1][y_2 - 1] != 0){
+                            subtask3_flag1 = true;
+                        }
+                        mark_elephant(x_2 - 1, y_2 - 1);
+                        break;
+                    default:
+                        break;
+                }
+
+                if(subtask3_flag1){
+                    std::cout << "Можно попасть на поле (m, n) одним ходом !" << std::endl;
+                } else {
+                    for (int i = 0; i < 8; ++i) {
+                        for (int j = 0; j < 8; ++j) {
+                            if(plate[i][j] > 1 && plate[i][j] < 5) {
+                                subtask3_flag2 = true;
+                                std::cout << "Координаты промежуточного поля - (" << i + 1 << ":" << j + 1 << ") - для попадания на поле (m,n) за два хода." << std::endl;
+                            }
+                        }
+                    }
+                }
+
+                if(!subtask3_flag2){
+                    std::cout << "На поле (m,n) невозможно попасть ни за один, ни за два хода." << std::endl;
+                }
 
             break;
         default:
