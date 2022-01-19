@@ -56,31 +56,39 @@ void user_greeting() {
 }
 
 void request_coordinates() {
-    std::cout << std::endl;
-
     do {
-        std::cout << "Введите координату X для первой точки (число от 1 до 8): ";
-        std::cin >> x_1;
-    } while (!error_handler(x_1, 1, 8));
 
-    do {
-        std::cout << "Введите координату Y для первой точки (число от 1 до 8): ";
-        std::cin >> y_1;
-    } while (!error_handler(x_1, 1, 8));
+        std::cout << std::endl;
 
-    std::cout << std::endl;
+        do {
+            std::cout << "Введите координату X для первой точки (число от 1 до 8): ";
+            std::cin >> x_1;
+        } while (!error_handler(x_1, 1, 8));
 
-    do {
-        std::cout << "Введите координату X для второй точки (число от 1 до 8): ";
-        std::cin >> x_2;
-    } while (!error_handler(x_2, 1, 8));
+        do {
+            std::cout << "Введите координату Y для первой точки (число от 1 до 8): ";
+            std::cin >> y_1;
+        } while (!error_handler(x_1, 1, 8));
 
-    do {
-        std::cout << "Введите координату Y для второй точки (число от 1 до 8): ";
-        std::cin >> y_2;
-    } while (!error_handler(x_2, 1, 8));
+        std::cout << std::endl;
 
-    std::cout << std::endl;
+        do {
+            std::cout << "Введите координату X для второй точки (число от 1 до 8): ";
+            std::cin >> x_2;
+        } while (!error_handler(x_2, 1, 8));
+
+        do {
+            std::cout << "Введите координату Y для второй точки (число от 1 до 8): ";
+            std::cin >> y_2;
+        } while (!error_handler(x_2, 1, 8));
+
+        std::cout << std::endl;
+
+        if (x_1 == x_2 && y_1 == y_2) {
+            std::cout << "Вы ввели одинаковые координаты ! Повторите попытку." << std::endl;
+        }
+
+    } while (x_1 == x_2 && y_1 == y_2); // Обработка ошибки ввода одинаковых координат
 }
 
 void request_figure(bool isSecondTask) {
@@ -176,9 +184,9 @@ int main() {
                 request_coordinates();
 
                 if (marked_plate[x_1 - 1][y_1 - 1] == marked_plate[x_2 - 1][y_2 - 1]) {
-                   std::cout << "Поля (k, I) и (m, n) - являются полями одного цвета !";
+                   std::cout << "Поля (k, I) и (m, n) - являются полями одного цвета !" << std::endl;
                 } else {
-                    std::cout << "Поля (k, I) и (m, n) - НЕ являются полями одного цвета !";
+                    std::cout << "Поля (k, I) и (m, n) - НЕ являются полями одного цвета !" << std::endl;
                 }
 
             break;
