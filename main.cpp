@@ -68,7 +68,7 @@ void request_coordinates() {
         do {
             std::cout << "Введите координату Y для первой точки (число от 1 до 8): ";
             std::cin >> y_1;
-        } while (!error_handler(x_1, 1, 8));
+        } while (!error_handler(y_1, 1, 8));
 
         std::cout << std::endl;
 
@@ -80,7 +80,7 @@ void request_coordinates() {
         do {
             std::cout << "Введите координату Y для второй точки (число от 1 до 8): ";
             std::cin >> y_2;
-        } while (!error_handler(x_2, 1, 8));
+        } while (!error_handler(y_2, 1, 8));
 
         std::cout << std::endl;
 
@@ -104,7 +104,7 @@ void request_figure(bool isSecondTask) {
             std::cout << "    4) Конь"  << std::endl;
             std::cout << "Введите число от 1 до 4: ";
             std::cin >> figure;
-        } while (!error_handler(x_1, 1, 4));
+        } while (!error_handler(figure, 1, 4));
     } else {
         do {
             std::cout << "Введите номер фигуры:" << std::endl;
@@ -113,7 +113,7 @@ void request_figure(bool isSecondTask) {
             std::cout << "    3) Слон"  << std::endl;
             std::cout << "Введите число от 1 до 3: ";
             std::cin >> figure;
-        } while (!error_handler(x_1, 1, 3));
+        } while (!error_handler(figure, 1, 3));
     }
 
     std::cout << std::endl;
@@ -272,6 +272,7 @@ int main() {
             break;
     }
 
+    std::cout << std::endl;
     system("pause");
     return 0;
 }
