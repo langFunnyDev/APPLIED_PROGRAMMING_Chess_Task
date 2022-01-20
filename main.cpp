@@ -52,7 +52,7 @@ void logger_init(){
     }
 }
 
-void logger(std::string Message) {
+void logger(const std::string& Message) {
 
     time_t rawtime;
     struct tm * timeinfo;
