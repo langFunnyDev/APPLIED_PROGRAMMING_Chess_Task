@@ -4,7 +4,7 @@
 #include <string>
 #include <ctime>
 
-int manipulator, x_1, x_2, y_1, y_2, figure, answer2, answer3_x, answer3_y;
+int manipulator, x_1, x_2, y_1, y_2, figure;
 bool subtask3_flag1 = false;
 bool subtask3_flag2 = false;
 std::ofstream LogFile;
